@@ -223,8 +223,7 @@ a:hover { color: var(--main-ink); }
 .zoom { transition: transform .7s cubic-bezier(0.2,0.7,0.2,1); }
 
 /* Pain points */
-/* White like the services section below, so it supplies no bottom padding of its own */
-.pains { padding: 104px 20px 0; }
+.pains { background: var(--bg-soft); padding: 104px 20px; }
 .pains .grid2 { margin-top: 40px; }
 .pain {
   min-width: 0; display: flex; align-items: center; gap: 18px;
@@ -502,7 +501,6 @@ textarea.input { resize: vertical; line-height: 1.6; }
   .hero__ctas a { flex: 1 1 100%; }
   .hero__fig { display: none; }
   .section, .pains { padding-top: 64px; padding-bottom: 64px; }
-  .pains { padding-bottom: 0; }
   .grid2, .grid3, .pains .grid2, .showcase { margin-top: 28px; }
   .svc { padding: 24px; gap: 18px; }
   .svc__img { margin: -24px -24px 0; height: 190px; }
