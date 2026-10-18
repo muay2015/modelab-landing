@@ -362,7 +362,23 @@
           <label class="field">이메일<input class="input" type="email" name="email" maxlength="120" autocomplete="email" placeholder="name@company.com"></label>
         </div>
         <label class="field">문의 내용<textarea class="input" name="message" rows="4" maxlength="3000" placeholder="지금 쓰는 시스템, 반복되는 업무 등을 자유롭게 적어 주세요."></textarea></label>
-        <label class="agree"><input type="checkbox" name="agree" required>개인정보 수집·이용에 동의합니다. <em class="req" aria-hidden="true">*</em></label>
+        <div class="consent">
+          <label class="agree"><input type="checkbox" name="agree" required aria-describedby="privacy-notice">개인정보 수집·이용에 동의합니다. <em class="req" aria-hidden="true">*</em></label>
+          <details class="privacy">
+            <summary>개인정보 수집·이용 안내 보기</summary>
+            <div class="privacy__body" id="privacy-notice">
+              <table>
+                <tbody>
+                  <tr><th scope="row">수집 항목</th><td>필수: 담당자명, 연락처<br>선택: 회사명, 이메일, 관심 서비스, 문의 내용</td></tr>
+                  <tr><th scope="row">수집 목적</th><td>상담 신청 접수 및 상담 회신</td></tr>
+                  <tr><th scope="row">보유 기간</th><td><strong>수집일로부터 6개월</strong> 보관 후 지체 없이 파기합니다.</td></tr>
+                  <tr><th scope="row">처리 위탁</th><td>문의 내용 메일 전송: Resend, Inc.(미국)<br>웹사이트 운영: Cloudflare, Inc.(미국)</td></tr>
+                </tbody>
+              </table>
+              <p>개인정보 수집·이용에 동의하지 않으실 수 있습니다. 동의하지 않으시면 이 양식으로는 상담 신청이 어렵지만, 전화(010-6692-0262)나 이메일로는 상담을 받으실 수 있습니다.</p>
+            </div>
+          </details>
+        </div>
         <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <p class="form__msg" role="alert" data-form-msg hidden></p>
         <button class="btn form__submit" type="submit" data-form-submit>무료 상담 신청하기</button>

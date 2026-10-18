@@ -7,6 +7,7 @@
 
 var SERVICES = { mes: '클라우드 MES 전환', auto: '사무업무 자동화', web: '홈페이지·앱 제작' };
 var LIMITS = { company: 100, name: 50, phone: 30, email: 120, message: 3000 };
+var RETENTION_MONTHS = 6;
 
 function json(body, status) {
   return new Response(JSON.stringify(body), {
@@ -19,6 +20,15 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, function (c) {
     return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
   });
+}
+
+// Date (KST) after which the inquiry must be deleted, as YYYY-MM-DD.
+function deleteBy(now) {
+  var kst = new Date(now.getTime() + 9 * 3600 * 1000);
+  var y = kst.getUTCFullYear(), m = kst.getUTCMonth() + RETENTION_MONTHS, d = kst.getUTCDate();
+  var last = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+  var due = new Date(Date.UTC(y, m, Math.min(d, last)));
+  return due.toISOString().slice(0, 10);
 }
 
 function clean(v, max) {
@@ -58,6 +68,7 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: 'not_configured' }, 500);
   }
 
+  var due = deleteBy(new Date());
   var rows = [
     ['관심 서비스', services.join(', ') || '-'],
     ['회사명', f.company || '-'],
@@ -74,8 +85,12 @@ export async function onRequestPost(context) {
     }).join('') +
     '</table>' +
     '<h3 style="margin:24px 0 8px;font-size:15px">문의 내용</h3>' +
-    '<div style="white-space:pre-wrap;font-size:14px;line-height:1.6">' + escapeHtml(f.message || '-') + '</div>';
-  var text = rows.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n') + '\n\n문의 내용:\n' + (f.message || '-');
+    '<div style="white-space:pre-wrap;font-size:14px;line-height:1.6">' + escapeHtml(f.message || '-') + '</div>' +
+    '<p style="margin:28px 0 0;padding:12px 14px;border-radius:6px;background:#FFF4E5;color:#7A4B00;font-size:13px;line-height:1.6">' +
+    '개인정보 보관 기한: <strong>' + due + '</strong>까지 (접수일로부터 ' + RETENTION_MONTHS + '개월)<br>' +
+    '기한이 지나면 이 메일과 관련 기록을 삭제해 주세요.</p>';
+  var text = rows.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n') + '\n\n문의 내용:\n' + (f.message || '-') +
+    '\n\n※ 개인정보 보관 기한: ' + due + '까지 (접수일로부터 ' + RETENTION_MONTHS + '개월). 기한이 지나면 이 메일과 관련 기록을 삭제해 주세요.';
 
   var mail = {
     from: env.CONTACT_FROM || '트러스트브릿지 문의 <onboarding@resend.dev>',
