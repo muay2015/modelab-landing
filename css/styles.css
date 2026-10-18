@@ -492,7 +492,14 @@ textarea.input { resize: vertical; line-height: 1.6; }
   .site-header__inner { height: 60px; }
   section[id] { scroll-margin-top: 60px; }
   .hero { min-height: 0; }
-  .hero__inner { padding: 52px 20px 100px; gap: 0; }
+  .hero__inner { padding: 52px 20px 32px; gap: 0; }
+  .hero__pager { position: relative; bottom: auto; padding-bottom: 20px; }
+  .hero__pager-in { flex-wrap: nowrap; gap: 16px; }
+  .hero__count { min-width: 0; white-space: nowrap; }
+  .hero__count strong { font-size: 22px; }
+  .hero__count span { font-size: 13px; }
+  .hero__dots { flex: 0 0 auto; gap: 4px; }
+  .hero__dot { width: 32px; }
   .hero__title { margin-top: 14px; font-size: 30px; }
   .hero__sub { margin-top: 16px; font-size: 16px; }
   .hero__ctas { margin-top: 28px; }
