@@ -260,7 +260,7 @@ a:hover { color: var(--main-ink); }
 @supports (grid-template-rows: subgrid) {
   .services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .svc { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 22px; align-content: start; }
-  .svc__note { align-self: end; }
+  .svc .svc__note { align-self: start; margin-top: 0; }
 }
 @media (max-width: 960px) {
   .services { grid-template-columns: minmax(0, 1fr); }
