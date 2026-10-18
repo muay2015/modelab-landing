@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /functions/
+
+Sitemap: https://modelab-landing.pages.dev/sitemap.xml
