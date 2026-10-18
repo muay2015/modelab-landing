@@ -539,3 +539,13 @@ textarea.input { resize: vertical; line-height: 1.6; }
   .hero__slide, .zoom { transition: none; }
   .card, .card:hover { transition: none; transform: none; }
 }
+
+/* Contact form states */
+.req { font-style: normal; color: var(--point-ink); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.input[aria-invalid="true"] { border-color: #D93025; }
+.agree.is-invalid { color: #C5221F; }
+.form__msg { margin: 0; padding: 12px 14px; border-radius: 8px; background: #FDECEC; color: #B3261E; font-size: 14px; line-height: 1.6; }
+.form__msg a { color: inherit; font-weight: 600; }
+.form__submit[disabled] { opacity: 0.7; cursor: progress; filter: none; }
+.form > .field { flex: none; }

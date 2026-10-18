@@ -354,16 +354,18 @@
           </div>
         </fieldset>
         <div class="form__row">
-          <label class="field">회사명<input class="input" type="text" name="company" autocomplete="organization" placeholder="예) ○○산업"></label>
-          <label class="field">담당자명<input class="input" type="text" name="name" autocomplete="name" placeholder="이름 / 직함"></label>
+          <label class="field">회사명<input class="input" type="text" name="company" maxlength="100" autocomplete="organization" placeholder="예) ○○산업"></label>
+          <label class="field"><span>담당자명 <em class="req" aria-hidden="true">*</em></span><input class="input" type="text" name="name" required maxlength="50" autocomplete="name" placeholder="이름 / 직함"></label>
         </div>
         <div class="form__row">
-          <label class="field">연락처<input class="input" type="tel" name="phone" autocomplete="tel" placeholder="010-0000-0000"></label>
-          <label class="field">이메일<input class="input" type="email" name="email" autocomplete="email" placeholder="name@company.com"></label>
+          <label class="field"><span>연락처 <em class="req" aria-hidden="true">*</em></span><input class="input" type="tel" name="phone" required maxlength="30" autocomplete="tel" placeholder="010-0000-0000"></label>
+          <label class="field">이메일<input class="input" type="email" name="email" maxlength="120" autocomplete="email" placeholder="name@company.com"></label>
         </div>
-        <label class="field">문의 내용<textarea class="input" name="message" rows="4" placeholder="지금 쓰는 시스템, 반복되는 업무 등을 자유롭게 적어 주세요."></textarea></label>
-        <label class="agree"><input type="checkbox" name="agree">개인정보 수집·이용에 동의합니다.</label>
-        <button class="btn form__submit" type="submit">무료 상담 신청하기</button>
+        <label class="field">문의 내용<textarea class="input" name="message" rows="4" maxlength="3000" placeholder="지금 쓰는 시스템, 반복되는 업무 등을 자유롭게 적어 주세요."></textarea></label>
+        <label class="agree"><input type="checkbox" name="agree" required>개인정보 수집·이용에 동의합니다. <em class="req" aria-hidden="true">*</em></label>
+        <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <p class="form__msg" role="alert" data-form-msg hidden></p>
+        <button class="btn form__submit" type="submit" data-form-submit>무료 상담 신청하기</button>
       </form>
       <div class="form-done" data-form-done hidden>
         <span><svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><path d="M12.5 20.5l5 5 10-11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
