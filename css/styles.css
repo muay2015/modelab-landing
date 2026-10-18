@@ -567,3 +567,25 @@ textarea.input { resize: vertical; line-height: 1.6; }
 .privacy tr + tr th, .privacy tr + tr td { border-top: 1px solid var(--line); }
 .privacy strong { color: var(--ink); }
 .privacy p { margin: 10px 0 0; line-height: 1.6; }
+
+/* Compact contact section */
+.section.contact { padding-top: 72px; padding-bottom: 72px; }
+.contact__inner { gap: 48px; align-items: center; }
+.contact__lead { margin-top: 18px; }
+.contact__list { margin-top: 28px; gap: 12px; }
+.form-card { padding: 28px 32px; }
+.form { gap: 16px; }
+.form .chips { margin-top: 10px; }
+.form .chip { min-height: 40px; padding: 0 14px; font-size: 14px; }
+.form .field { gap: 6px; font-size: 13px; }
+.form .input { min-height: 44px; padding: 10px 12px; font-size: 15px; }
+.form .form__row { gap: 12px; }
+.form .agree { min-height: 36px; }
+.form .consent { gap: 0; }
+.form .privacy summary { min-height: 28px; }
+.form .form__submit { min-height: 52px; font-size: 16px; }
+@media (max-width: 640px) {
+  .section.contact { padding-top: 56px; padding-bottom: 56px; }
+  .contact__inner { gap: 32px; }
+  .form-card { padding: 22px 18px; }
+}
